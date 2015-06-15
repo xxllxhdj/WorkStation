@@ -4,6 +4,7 @@
 
 // add your plugins to this list--either the identifier, the filesystem location or the URL
 var pluginlist = [
+    'org.apache.cordova.splashscreen',
     "com.phonegap.plugins.barcodescanner"
 ];
 

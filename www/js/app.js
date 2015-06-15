@@ -20,6 +20,9 @@ angular.module('WorkStation', [
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
+            if (navigator.splashscreen) {
+                navigator.splashscreen.hide();
+            }
         });
     })
     .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {

@@ -29,4 +29,15 @@ a:focus {
     margin: 5px 0 0 0;
 }
 
+.tech-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    background-clip: padding-box;
+    padding: 2px;
+}
+.activated .tech-img {
+    box-shadow: 0px 0px 15px #387ef5;
+}
+
 /*********************************************************home.html****************************************************/
