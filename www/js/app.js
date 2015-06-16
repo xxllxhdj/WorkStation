@@ -1,5 +1,8 @@
 define([
     'ionic',
+    'ngCordova',
+
+    'js/constants',
     'apps/ngCordova/barcodeScanner/barcodeScanner.ctrl',
     'apps/ngCordova/customPlugins/customPlugins'
 ], function () {
@@ -7,11 +10,12 @@ define([
         'ionic',
         'ngCordova',
 
+        'WorkStation.constants',
         'demo.barcodeScanner.ctrl',
         'demo.customPlugins'
     ])
 
-        .run(['$ionicPlatform', '$timeout', function ($ionicPlatform, $timeout) {
+        .run(['$rootScope', '$ionicHistory', '$location', '$ionicPlatform', '$timeout', '$cordovaToast', 'APPCONSTANTS', function ($rootScope, $ionicHistory, $location, $ionicPlatform, $timeout, $cordovaToast, APPCONSTANTS) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)
@@ -24,10 +28,43 @@ define([
                 if (navigator.splashscreen) {
                     $timeout(function () {
                         navigator.splashscreen.hide();
-                    }, 1500);
+                    }, APPCONSTANTS.SPLASH_SCREEN_EXTRA_DELAY);
                 }
             });
+
+            $ionicPlatform.registerBackButtonAction(
+                onHardwareBackButton,
+                APPCONSTANTS.PLATFORM_BACK_BUTTON_PRIORITY_VIEW
+            );
+
+            $rootScope.confirmExit = false;
+
+            function onHardwareBackButton(e) {
+                if ($location.path() === '/home') {
+                    if ($rootScope.confirmExit) {
+                        ionic.Platform.exitApp();
+                    } else {
+                        $rootScope.confirmExit = true;
+                        $cordovaToast.showShortBottom(APPCONSTANTS.EXIT_APP_CONFIRM_STR);
+                        $timeout(function () {
+                            $rootScope.confirmExit = false;
+                        }, APPCONSTANTS.EXIT_APP_CONFIRM_TIME);
+                    }
+                } else if ($ionicHistory.backView()) {
+                    $ionicHistory.goBack();
+                } else {
+                    $rootScope.confirmExit = true;
+                    $cordovaToast.showShortBottom(APPCONSTANTS.EXIT_APP_CONFIRM_STR);
+                    $timeout(function () {
+                        $rootScope.confirmExit = false;
+                    }, APPCONSTANTS.EXIT_APP_CONFIRM_TIME);
+                }
+
+                e.preventDefault();
+                return false;
+            }
         }])
+
         .config(['$stateProvider', '$urlRouterProvider', '$ionicConfigProvider', function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             $stateProvider.state('home', {
                 url: '/home',

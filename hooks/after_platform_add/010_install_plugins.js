@@ -5,7 +5,8 @@
 // add your plugins to this list--either the identifier, the filesystem location or the URL
 var pluginlist = [
     'cordova-plugin-splashscreen',
-    'phonegap-plugin-barcodescanner'
+    'phonegap-plugin-barcodescanner',
+    'nl.x-services.plugins.toast'
 ];
 
 var localpluginlist = [
