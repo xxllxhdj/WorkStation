@@ -7,7 +7,8 @@ angular.module('WorkStation', [
     'ionic',
     'ngCordova',
 
-    'demo.barcodeScanner.ctrl'
+    'demo.barcodeScanner.ctrl',
+    'demo.customPlugins'
 ])
 
     .run(function ($ionicPlatform) {
@@ -39,6 +40,11 @@ angular.module('WorkStation', [
             url: '/ngCordova/barcodeScanner',
             templateUrl: 'apps/ngCordova/barcodeScanner/barcodeScanner.html',
             controller: "BarcodeScannerCtrl"
+        })
+        .state('ngCordova-customPlugins', {
+            url: '/ngCordova/customPlugins',
+            templateUrl: 'apps/ngCordova/customPlugins/customPlugins.html',
+            controller: "customCtrl"
         });
         $urlRouterProvider.otherwise('/home');
 

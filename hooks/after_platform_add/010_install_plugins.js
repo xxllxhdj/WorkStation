@@ -5,7 +5,11 @@
 // add your plugins to this list--either the identifier, the filesystem location or the URL
 var pluginlist = [
     'org.apache.cordova.splashscreen',
-    "com.phonegap.plugins.barcodescanner"
+    'com.phonegap.plugins.barcodescanner'
+];
+
+var localpluginlist = [
+    "cn.plugins.extrainfo"
 ];
 
 // no need to configure below
@@ -21,4 +25,9 @@ function puts(error, stdout, stderr) {
 
 pluginlist.forEach(function(plug) {
     exec("cordova plugin add " + plug, puts);
+});
+
+var localPluginsDir = path.resolve(__dirname, '../../localplugins');
+localpluginlist.forEach(function(plug) {
+    exec("cordova plugin add " + localPluginsDir + '\\' + plug, puts);
 });
