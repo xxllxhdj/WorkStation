@@ -4,7 +4,8 @@ define([
 
     'js/constants',
     'apps/ngCordova/barcodeScanner/barcodeScanner.ctrl',
-    'apps/ngCordova/customPlugins/customPlugins'
+    'apps/ngCordova/customPlugins/customPlugins',
+    'apps/ngCordova/inAppBrowser/inAppBrowser'
 ], function () {
     angular.module('WorkStation', [
         'ionic',
@@ -12,7 +13,8 @@ define([
 
         'WorkStation.constants',
         'demo.barcodeScanner.ctrl',
-        'demo.customPlugins'
+        'demo.customPlugins',
+        'demo.inAppBrowser'
     ])
 
         .run(['$rootScope', '$ionicHistory', '$location', '$ionicPlatform', '$timeout', '$cordovaToast', 'APPCONSTANTS', function ($rootScope, $ionicHistory, $location, $ionicPlatform, $timeout, $cordovaToast, APPCONSTANTS) {
@@ -84,6 +86,11 @@ define([
                     url: '/ngCordova/customPlugins',
                     templateUrl: 'apps/ngCordova/customPlugins/customPlugins.html',
                     controller: "customPluginCtrl"
+                })
+                .state('ngCordova-inAppBrowser', {
+                    url: '/ngCordova/inAppBrowser',
+                    templateUrl: 'apps/ngCordova/inAppBrowser/inAppBrowser.html',
+                    controller: "inAppBrowserCtrl"
                 });
             $urlRouterProvider.otherwise('/home');
 
