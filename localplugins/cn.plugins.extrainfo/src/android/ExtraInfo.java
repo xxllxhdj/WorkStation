@@ -18,7 +18,7 @@ public class ExtraInfo extends CordovaPlugin {
             if (i.hasExtra(Intent.EXTRA_TEXT)) {
                 callbackContext.success(i.getStringExtra(Intent.EXTRA_TEXT));
             } else {
-                callbackContext.error("failed");
+                callbackContext.error("Has no extra!");
             }
             return true;
         }
