@@ -16,6 +16,16 @@ define(['ionic'], function () {
                     //$cordovaToast.showShortBottom("Error: " + error);
                 });
             };
+            $scope.openLocalURL = function () {
+                var options = {
+                    location: "no"
+                };
+                $cordovaInAppBrowser.open('apps/ngCordova/testChildApp/index.html', $scope.target, options).then(function () {
+                    //$cordovaToast.showShortBottom("InAppBrowser opened http://ngcordova.com successfully");
+                }, function (error) {
+                    //$cordovaToast.showShortBottom("Error: " + error);
+                });
+            };
 
             $rootScope.$on("$cordovaInAppBrowser:exit", function (event, result) {
                 alert(result.type + ', ' + result.additional);
