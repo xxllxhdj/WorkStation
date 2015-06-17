@@ -10,10 +10,11 @@
         </div>
     </ion-header-bar>
     <ion-content class="search-content">
-        <ion-list>
+        <div class="card">
+            <div class="item item-divider">Target配置</div>
             <ion-radio ng-model="target" ng-value="'_blank'">_blank</ion-radio>
             <ion-radio ng-model="target" ng-value="'_self'">_self</ion-radio>
             <ion-radio ng-model="target" ng-value="'_system'">_system</ion-radio>
-        </ion-list>
+        </div>
     </ion-content>
 </ion-view>
