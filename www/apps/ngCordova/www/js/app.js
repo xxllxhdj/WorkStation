@@ -8,11 +8,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('playlists', {
-                url: "/playlists",
-                templateUrl: "abnormalAll.html",
-                controller: 'PlaylistsCtrl'
+            .state('home', {
+                url: "/home",
+                templateUrl: "home.html",
+                controller: 'HomeCtrl'
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/playlists');
+        $urlRouterProvider.otherwise('/home');
     });

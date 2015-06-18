@@ -14,14 +14,19 @@
 <body ng-app="starter">
     <ion-nav-view></ion-nav-view>
 
-    <script id="abnormalAll.html" type="text/ng-template">
-        <ion-view view-title="Playlists">
+    <script id="home.html" type="text/ng-template">
+        <ion-view view-title="Home">
             <ion-content>
-                <ion-list>
-                    <ion-item ng-repeat="playlist in playlists"}">
-                        {{playlist.title}}
+                <div class="card">
+                    <ion-item class="item-icon-right" href="goHome">
+                        <i class="icon ion-ios-arrow-right"></i>
+                        返回主页面
                     </ion-item>
-                </ion-list>
+                    <ion-item class="item-icon-right" href="goNgCordova">
+                        <i class="icon ion-ios-arrow-right"></i>
+                        返回ngCordova
+                    </ion-item>
+                </div>
             </ion-content>
         </ion-view>
     </script>

@@ -17,7 +17,7 @@ define([
         'demo.inAppBrowser'
     ])
 
-        .run(['$rootScope', '$ionicHistory', '$location', '$ionicPlatform', '$timeout', '$cordovaToast', 'APPCONSTANTS', function ($rootScope, $ionicHistory, $location, $ionicPlatform, $timeout, $cordovaToast, APPCONSTANTS) {
+        .run(['$rootScope', '$ionicHistory', '$location', '$ionicPlatform', '$state', '$timeout', '$cordovaToast', '$cordovaInAppBrowser', 'APPCONSTANTS', function ($rootScope, $ionicHistory, $location, $ionicPlatform, $state, $timeout, $cordovaToast, $cordovaInAppBrowser, APPCONSTANTS) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)
@@ -41,7 +41,20 @@ define([
 
             $rootScope.confirmExit = false;
             $rootScope.$on("$cordovaInAppBrowser:exit", function (event, result) {
-                alert(result.type + ', ' + result.additional);
+                //alert(result.type + ', ' + result.additional);
+            });
+            $rootScope.$on("$cordovaInAppBrowser:loadstart", function (event, result) {
+                var url = result.url;
+                if (url.indexOf('goHome') != -1) {
+                    $cordovaInAppBrowser.close();
+                    //$cordovaToast.showShortBottom('goHome');
+                    $state.go('home');
+                }
+                if (url.indexOf('goNgCordova') != -1) {
+                    $cordovaInAppBrowser.close();
+                    //$cordovaToast.showShortBottom('goNgCordova');
+                    $state.go('ngCordova');
+                }
             });
 
             function onHardwareBackButton(e) {
