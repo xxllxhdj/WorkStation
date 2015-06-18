@@ -26,12 +26,15 @@ define(['ionic'], function () {
                     //$cordovaToast.showShortBottom("Error: " + error);
                 });
             };
-
-            $rootScope.$on("$cordovaInAppBrowser:exit", function (event, result) {
-                alert(result.type + ', ' + result.additional);
-            });
-            //$rootScope.$on("$cordovaInAppBrowser:loaderror", function (event, result) {
-            //    alert(result.code + ', ' + result.message);
-            //});
+            $scope.openIonicApp = function () {
+                var options = {
+                    location: "no"
+                };
+                $cordovaInAppBrowser.open('apps/ngCordova/www/index.html', $scope.target, options).then(function () {
+                    //$cordovaToast.showShortBottom("InAppBrowser opened http://ngcordova.com successfully");
+                }, function (error) {
+                    //$cordovaToast.showShortBottom("Error: " + error);
+                });
+            };
         }]);
 });

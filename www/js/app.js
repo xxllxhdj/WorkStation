@@ -40,6 +40,9 @@ define([
             );
 
             $rootScope.confirmExit = false;
+            $rootScope.$on("$cordovaInAppBrowser:exit", function (event, result) {
+                alert(result.type + ', ' + result.additional);
+            });
 
             function onHardwareBackButton(e) {
                 if ($location.path() === '/home') {
