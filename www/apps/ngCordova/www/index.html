@@ -18,13 +18,23 @@
         <ion-view view-title="Home">
             <ion-content>
                 <div class="card">
-                    <ion-item class="item-icon-right" href="goHome">
+                    <ion-item class="item-icon-right" ng-click="goMainApp('../temp.html#/goHome')">
                         <i class="icon ion-ios-arrow-right"></i>
                         返回主页面
                     </ion-item>
-                    <ion-item class="item-icon-right" href="goNgCordova">
+                    <ion-item class="item-icon-right" ng-click="goMainApp('../temp.html#/goNgCordova')">
                         <i class="icon ion-ios-arrow-right"></i>
                         返回ngCordova
+                    </ion-item>
+                    <ion-item class="item-icon-right" ng-click="goMainApp('../temp.html#/NULL')">
+                        <i class="icon ion-ios-arrow-right"></i>
+                        返回
+                    </ion-item>
+                </div>
+                <div class="card">
+                    <ion-item class="item-icon-right" href="http://www.baidu.com">
+                        <i class="icon ion-ios-arrow-right"></i>
+                        百度
                     </ion-item>
                 </div>
             </ion-content>
